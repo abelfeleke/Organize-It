@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Make a fit</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      function loadShirts() {
+        // Documentation: ttps://api.jquery.com/jQuery.get/
+        $.get({url: "/shirts", success: function(result) {
+            var response = JSON.parse(result);
+            console.log(response);
+            return response;
+          }});
+      }
+
+      function loadPants() {
+        // Documentation: ttps://api.jquery.com/jQuery.get/
+        $.get({url: "/pant", success: function(result) {
+            var response = JSON.parse(result);
+            console.log(response);
+            return response;
+          }});
+      }
+
+      function loadShoes() {
+        // Documentation: ttps://api.jquery.com/jQuery.get/
+        $.get({url: "/shoes", success: function(result) {
+            var response = JSON.parse(result);
+            console.log(response);
+            return response;
+          }});
+      }
+      function loadJackets() {
+        // Documentation: ttps://api.jquery.com/jQuery.get/
+        $.get({url: "/jackets", success: function(result) {
+            var response = JSON.parse(result);
+            console.log(response);
+            return response;
+          }});
+      }
+
+    </script>
+  </head>
+<body style="background-color:powderblue;">
+  <header class="topnav">
+    <img src="https://cdn1.iconfinder.com/data/icons/office-web/128/office-94-512.png">
+    <nav >
+      <ul>
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/all_clothes">Wardrobe</a></li>
+        <li><a href="/upload">Upload</a></li>
+        <li><a href="/make_outfits">Make Outfit</a></li>
+        <li><a href="/about_us">About</a></li>
+        <li><a href="/sign-in">Sign Out</a></li>
+        <li>
+          <form class="changepage" action="/search" method="get">
+             <div class="input-field">
+                 <input id="search" name="search" type="search" required>
+                 <label class="label-icon" for="search">
+                 <i class="material-icons">search</i></label>
+              </div>
+          </form>
+      </li>
+     </ul>
+    </nav>
+  </header>
+    <div class="make_fits_buttons" style="text-align:center;">
+      <a href="/jackets"><input type="image" src="https://image.flaticon.com/icons/svg/343/343273.svg" name="saveForm" class="btTxt submit" id="jacket_icon" style="height:90px; margin:100px; border: 4px double #FFFFFF;border-radius: 4px;"/></a>
+      <a href="/shirt"><input type="image" src="https://image.flaticon.com/icons/svg/286/286964.svg" name="saveForm" class="btTxt submit" id="shirt_icon" style="height:90px; margin:100px; border: 4px double #FFFFFF;border-radius: 4px;"/></a>
+      <a href="/pant"><input type="image" src="https://image.flaticon.com/icons/svg/664/664466.svg" name="saveForm" class="btTxt submit" id="pants_icon" style="height:90px; margin:100px; border: 4px double #FFFFFF;border-radius: 4px;"/></a>
+      <a href="/shoes"><input type="image" src="https://image.flaticon.com/icons/svg/141/141614.svg" name="saveForm" class="btTxt submit" id="shoes_icon" style="height:90px; margin:100px; border: 4px double #FFFFFF;border-radius: 4px; ""/></a>
+    </div>
+    <script type="text/javascript">
+       registerHandlers()
+         function registerHandlers() {
+           document.getElementById("jacket_icon").addEventListener("click", JacketFunction);
+           document.getElementById("shirt_icon").addEventListener("click", ShirtFunction);
+           document.getElementById("pants_icon").addEventListener("click", PantsFunction);
+           document.getElementById("shoes_icon").addEventListener("click", ShoesFunction);
+         }
+         function JacketFunction(){
+           console.log("click jacket")
+           loadJackets()
+           var pants = loadJackets()
+         }
+         function ShirtFunction(){
+           console.log("click shirt")
+           loadShirts()
+           var shirts = loadShirts()
+         }
+         function PantsFunction(){
+           console.log("click pants")
+           loadPants()
+           var pants = loadPants()
+         }
+         function ShoesFunction(){
+           console.log("click shoes")
+           loadShoes()
+           var pants = loadShoes()
+         }
+    </script>
+    <!-- {% for element in img %}
+      <div class="image">
+        <img src="{{element.img_url}}" alt="No Picture Avaliable ">
+        <div class="textwords">
+          <p>Name: {{element.article_name}}</p>
+          <p>Description: {{element.article_description}}</p>
+          <p>Categories: {{element.categories}}</p>
+          <p>Personal Organization: {{element.personal_organization}}</p>
+        </div>
+      </div>
+    {% endfor %} -->
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/upload.css">
+
+  </head>
+  <body style="background-color:powderblue;">
+    <header class="topnav">
+      <img src="https://cdn1.iconfinder.com/data/icons/office-web/128/office-94-512.png">
+      <nav >
+        <ul>
+          <li><a href="/welcome">Home</a></li>
+          <li><a href="/all_clothes">Wardrobe</a></li>
+          <li><a href="/upload">Upload</a></li>
+          <li><a href="/make_outfits">Make Outfit</a></li>
+          <li><a href="/about_us">About</a></li>
+          <li><a href="/sign-in">Sign Out</a></li>
+          <li>
+          <form class="changepage" action="/search" method="get">
+             <div class="input-field">
+                 <input id="search" name="search" type="search" required>
+                 <label class="label-icon" for="search">
+                 <i class="material-icons">search</i></label>
+              </div>
+          </form>
+        </li>
+       </ul>
+      </nav>
+    </header>
+    <div>
+      <center>
+    <form action="/upload" method="post" style= "margin-top: 100px">
+
+      <p class="questions">Image address:</p>
+      <input type='text' name='img_url' value='' class="text-box">
+      <br>
+      <br>
+
+      <p class="questions">Name of article:</p>
+      <input type='text' name='article_name' value='' class="text-box">
+      <br>
+      <br>
+
+      <p class="questions">Description:</p>
+      <input type='text' name='article_description' value='' class="text-box">
+
+      <br>
+
+      <p class="questions">Category:</p>
+      <select name="categories" class="drop-down">
+        <option value="select">Select</option>
+        <option value="shirt">Tops</option>
+        <option value="pants">Bottoms</option>
+        <option value="shoes">Shoes</option>
+        <option value="jacket">Outerwear</option>
+      </select>
+      <br>
+      <p class="questions">Personal Organization (Ex: casual, athletic, fancy):</p>
+      <input type='text' name='personal_organization' value='' class="text-box">
+
+      <br>
+      <br>
+      <br>
+      <input type="submit" value="Upload" id="button">
+    </form>
+  </center>
+  </div>
+  </body>
+</html>

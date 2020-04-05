@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Clothes</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/toggle.css">
+
+    <style media="screen">
+      .active {
+        border: solid yellow thick;
+      }
+      {% for element in all_clothes %}
+        .notActive{{element.number}} {
+          border: solid black thick;
+        }
+      {% endfor %}
+
+
+    </style>
+  </head>
+<body style="background-color:powderblue";>
+  <header class="topnav">
+    <img src="https://cdn1.iconfinder.com/data/icons/office-web/128/office-94-512.png">
+    <nav >
+      <ul>
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/all_clothes">Wardrobe</a></li>
+        <li><a href="/upload">Upload</a></li>
+        <li><a href="/make_outfits">Make Outfit</a></li>
+        <li><a href="/about_us">About</a></li>
+        <li><a href="/sign-in">Sign Out</a></li>
+        <li>
+          <form class="changepage" action="/search" method="get">
+             <div class="input-field">
+                 <input id="search" name="search" type="search" required>
+                 <label class="label-icon" for="search">
+                 <i class="material-icons">search</i></label>
+              </div>
+          </form>
+      </li>
+     </ul>
+    </nav>
+  </header>
+  <br>
+  <br>
+<br>
+<br>
+<br>
+<center>
+<form class="toggle" action="/view-made-fits" method="get">
+  <input id="made_outfits_button" type="submit" name="Made-Outfits" value="Made Outfits">
+</form>
+</center>
+<br>
+<br>
+         {% for element in all_clothes %}
+         <div style="background-color: white"class="imagebox">
+             <img src="{{element.img_url}}" alt="No Picture Available" id="{{element.number}}" class='notActive{{element.number}}'>
+             <div class="text">
+               <p>Name: {{element.article_name}}</p>
+               <p>Description: {{element.article_description}}</p>
+               <p>Categories: {{element.categories}}</p>
+               <p>Personal Organization: {{element.personal_organization}}</p>
+             </div>
+           </div>
+
+            <script type="text/javascript">
+               registerHandlers()
+                 function registerHandlers() {
+                   document.getElementById({{element.number}}).addEventListener("click", myFunction)
+                 }
+                 function myFunction(event) {
+                   console.log(event.target)
+                   var list = document.getElementsByClassName("active")
+                     for(var i = 0; i< list.length; i++)
+                     {
+                       list[i].className = 'notActive{{element.number}}'
+                     }
+                   event.target.className = 'active'
+                   whats_selected = {{element.number}}
+                   document.getElementById("no").value = whats_selected
+                   console.log(document.getElementById("no").value)
+                   console.log(whats_selected)
+                 }
+            </script>
+         {% endfor %}
+         <br>
+         <br>
+         <form class="toggle" action="/all_clothes" method="post">
+           <input id="no" type="hidden" name="to_delete" value="">
+           <input id = "delete_button" type="submit" name="Made-Outfits" value="Delete Selected Item">
+         </form>
+
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      .active {
+        border: solid yellow thick;
+      }
+      {% for element in shirts %}
+        .notActive{{element.number}} {
+          border: solid white thick;
+        }
+      {% endfor %}
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="background-color:powderblue;">
+    <head>
+      <title>Home</title>
+      <link rel="stylesheet" href="../stylesheets/style.css">
+    </head>
+  <body>
+    <header class="topnav">
+      <img src="https://cdn1.iconfinder.com/data/icons/office-web/128/office-94-512.png">
+      <nav >
+        <ul>
+          <li><a href="/welcome">Home</a></li>
+          <li><a href="/all_clothes">Wardrobe</a></li>
+          <li><a href="/upload">Upload</a></li>
+          <li><a href="/make_outfits">Make Outfit</a></li>
+          <li><a href="/about_us">About</a></li>
+          <li><a href="/sign-in">Sign Out</a></li>
+          <li>
+          <form class="changepage" action="/search" method="get">
+             <div class="input-field">
+                 <input id="search" name="search" type="search" required>
+                 <label class="label-icon" for="search">
+                 <i class="material-icons">search</i></label>
+              </div>
+          </form>
+        </li>
+       </ul>
+      </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% for element in shirts %}
+      <div>
+        <div style="background-color:white"; class="image">
+          <img src="{{element.img_url}}" alt="No Picture Avaliable " id = {{element.number}}>
+          <div class="textwords">
+            <p>Name: {{element.article_name}}</p>
+            <p>Description: {{element.article_description}}</p>
+            <p>Categories: {{element.categories}}</p>
+            <p>Personal Organization: {{element.personal_organization}}</p>
+            <p><a href='/cart?add={{element.key.urlsafe()}}'>Add to Outfit</a><p>
+            <p><a href='/cart?clear_outfit=true'>Clear Cart</a><p>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+         registerHandlers()
+           function registerHandlers() {
+             document.getElementById({{element.number}}).addEventListener("click", myFunction);
+             console.log('TEST')
+           }
+           function myFunction(event) {
+             // {{counter}} += 1
+             console.log(event.target)
+             var list = document.getElementsByClassName("active")
+
+             for(var i = 0; i< list.length; i++){
+               list[i].className = 'notActive{{element.number}}'
+             }
+
+             event.target.className = 'active'
+             {{selected}} = {{element.number}};
+             console.log({{selected}})
+           }
+
+      </script>
+    {% endfor %}
+
+  </body>
+</html>

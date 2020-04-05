@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    title>Make a fit</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../stylesheets/toggle.css">
+
+    <style media="screen">
+      .active {
+        border: solid yellow thick;
+      }
+      {% for element in all_clothes %}
+        .notActive{{element.number}} {
+          border: solid black thick;
+        }
+      {% endfor %}
+      .crazy {
+        background-color: white;
+      }
+
+    </style>
+  </head>
+<body style="background-color:powderblue";>
+  <header class="topnav">
+    <img src="https://cdn1.iconfinder.com/data/icons/office-web/128/office-94-512.png">
+    <nav >
+      <ul>
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/all_clothes">Wardrobe</a></li>
+        <li><a href="/upload">Upload</a></li>
+        <li><a href="/make_outfits">Make Outfit</a></li>
+        <li><a href="/about_us">About</a></li>
+        <li><a href="/sign-in">Sign Out</a></li>
+        <li>
+          <form class="changepage" action="/search" method="get">
+             <div class="input-field">
+                 <input id="search" name="search" type="search" required>
+                 <label class="label-icon" for="search">
+                 <i class="material-icons">search</i></label>
+              </div>
+          </form>
+      </li>
+     </ul>
+    </nav>
+  </header>
+  <br>
+  <br>
+<br>
+<br>
+<br>
+<center>
+<form class="toggle" action="/all_clothes" method="get">
+  <input id="made_outfits_button" type="submit" name="Made-Outfits" value="All Clothes">
+</form>
+</center>
+<br>
+<br>
+<!-- HAVE TO EDIT BASED OFF OF OUTFIT HANDLER  -->
+         {% for element in all_clothes %}
+         <div class="crazy">
+
+           {% if 'shoes' in element %}
+            <div style="background-color: white" class="imagebox">
+                <img src="{{element['shoes'].img_url}}" alt="idk" id="{{element['shoes'].number}}" class='notActive{{element['shoes'].number}}'>
+                <div class="text">
+                  <p>Name: {{element['shoes'].article_name}}</p>
+                  <p>Description: {{element['shoes'].article_description}}</p>
+                  <p>Categories: {{element['shoes'].categories}}</p>
+                  <p>Personal Organization: {{element['shoes'].personal_organization}}</p>
+                </div>
+              </div>
+           {% endif %}
+
+
+           {% if 'top' in element %}
+           <div style="background-color: white"class="imagebox">
+               <img src="{{element['top'].img_url}}" alt="idk" id="{{element['top'].number}}" class='notActive{{element['top'].number}}'>
+               <div class="text">
+                 <p>Name: {{element['top'].article_name}}</p>
+                 <p>Description: {{element['top'].article_description}}</p>
+                 <p>Categories: {{element['top'].categories}}</p>
+                 <p>Personal Organization: {{element['top'].personal_organization}}</p>
+               </div>
+             </div>
+           {% endif %}
+
+           {% if 'bottoms' in element %}
+             <div style="background-color: white"class="imagebox">
+                 <img src="{{element['bottoms'].img_url}}" alt="idk" id="{{element['bottoms'].number}}" class='notActive{{element['bottoms'].number}}'>
+                 <div class="text">
+                   <p>Name: {{element['bottoms'].article_name}}</p>
+                   <p>Description: {{element['bottoms'].article_description}}</p>
+                   <p>Categories: {{element['bottoms'].categories}}</p>
+                   <p>Personal Organization: {{element['bottoms'].personal_organization}}</p>
+                 </div>
+               </div>
+           <br>
+           {% endif %}
+
+           {% if 'outerwear' in element %}
+           <div style="background-color: white"class="imagebox">
+               <img src="{{element['outerwear'].img_url}}" alt="idk" id="{{element['outerwear'].number}}" class='notActive{{element['outerwear'].number}}'>
+               <div class="text">
+                 <p>Name: {{element['outerwear'].article_name}}</p>
+                 <p>Description: {{element['outerwear'].article_description}}</p>
+                 <p>Categories: {{element['outerwear'].categories}}</p>
+                 <p>Personal Organization: {{element['outerwear'].personal_organization}}</p>
+               </div>
+             </div>
+           <br>
+           {% endif %}
+           <hr style="border: 2px solid#5b9aa0;" />
+
+         </div>
+         <bl>
+            <script type="text/javascript">
+               registerHandlers()
+                 function registerHandlers() {
+                   document.getElementById({{element.number}}).addEventListener("click", myFunction)
+                 }
+                 function myFunction(event) {
+                   console.log(event.target)
+                   var list = document.getElementsByClassName("active")
+                     for(var i = 0; i< list.length; i++)
+                     {
+                       list[i].className = 'notActive{{element.number}}'
+                     }
+                   event.target.className = 'active'
+                   whats_selected = {{element.number}}
+                   document.getElementById("no").value = whats_selected
+                   console.log(document.getElementById("no").value)
+                   console.log(whats_selected)
+                 }
+            </script>
+            {% endfor %}
+         <br>
+
+
+  </body>
+</html>

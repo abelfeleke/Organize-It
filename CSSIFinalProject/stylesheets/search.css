@@ -1,0 +1,15 @@
+.imagebox {
+display: inline-block;
+border-radius: 50%;
+border: 1px solid #ddd;
+border-radius: 4px;
+padding: 5px;
+display: inline-block;
+}
+.imagebox img{
+  width:250px;
+  height:230px;
+}
+.text{
+   text-align: center;
+}
